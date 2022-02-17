@@ -1,12 +1,8 @@
-* {
-    font-family: Helvetica;
+.TODOnav{
+	height: 100px;
+	background-color: lightgrey;
 }
 
-.heading {
-    color: red;
-    font-family: Arial;
-}
-
-h1 {
-    color: blue;
+.second-row{
+	padding-top: 50px;
 }
