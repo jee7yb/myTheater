@@ -1,3 +1,13 @@
+input:hover, 
+input:active, 
+input:focus{
+	 outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+
+
 .TODOnav{
 	height: 100px;
 	background-color: lightgrey;
@@ -24,3 +34,37 @@
     left: 0;
 }
 
+.search-container{
+	justify-content: center;
+}
+
+.searchbar{
+	border: none;
+	border-radius: 20px;
+}
+
+.searchicon{
+	height: 30px;
+}
+
+.rateicon{
+	height: 24px;
+	padding-right: 8px;
+	margin-bottom: 6px;
+}
+
+.input-group-text.search-addon{
+	background-color: white;
+	border: none;
+	border-radius: 20px;
+}
+
+.movie-rating{
+	text-align: center;
+	padding-top: 3px;
+	font-size: 18px;
+}
+
+.main-footer{
+	height:100px;
+}
