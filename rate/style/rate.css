@@ -1,0 +1,119 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+     box-sizing: border-box;
+}
+
+*/
+
+/* Responsive Design */
+
+.row {
+    width: 100%;
+}
+
+[class*="col-"]  {
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-12 {
+        width: 100%;
+    }
+    [class*="col-"]  {
+        float:left;
+        padding: 20px;
+
+    }  
+}
+
+.slider {
+    display:inline-block;
+    width:70%;
+    text-align:center;
+}
+
+.textbox {
+    padding:0px;
+    text-align:center;
+}
+
+.poster {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.rating {
+    line-height:2.5em; 
+    width:65%;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+textarea:hover {
+    color:#FE6A16;
+}
