@@ -54,7 +54,16 @@
     height: 30px;
 }
 
-/*MAIN*/
+/*BODY*/
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
 .slider {
     display:inline-block;
     width:70%;
@@ -82,15 +91,6 @@
     margin-left:auto;
     margin-right:auto;
     box-shadow: 9px 4px 10px 7px #888888;
-}
-
-.header {
-    height:100px;
-    width:100%;
-}
-
-body {
-    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
 }
 
 
