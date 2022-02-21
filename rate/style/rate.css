@@ -1,0 +1,100 @@
+/*MOBILE VIEW*/
+@media only screen and (max-width: 768px) {
+    .slider {
+        margin-bottom: 0px;
+    }
+
+    .rating-title{
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .rating {
+        padding-left: 80px;
+        line-height:2.5em; 
+        width:100%;
+    }
+
+    .notes-row{
+        padding-top: 50px;
+        padding-left: 80px;
+        margin-bottom: 80px;
+    }
+}
+
+/*DESKTOP VIEW*/
+@media only screen and (min-width: 768px) {
+    .slider {
+        margin-bottom: 40px;
+    }
+
+    .rating-title{
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .rating {
+        line-height:2.5em; 
+        width:65%;
+    }
+}
+
+/*NAV BAR*/
+.mytheater-nav{
+     border-bottom:3px solid #FE6A16;
+}
+
+.profileicon{
+    width: 30px;
+    height: 30px;
+}
+
+.homeicon{
+    width: 30px;
+    height: 30px;
+}
+
+/*BODY*/
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+.slider {
+    display:inline-block;
+    width:70%;
+    text-align:center;
+}
+
+.notes-textbox {
+    padding-top: 10px;
+    text-align:center;
+}
+
+.textarea{
+    border: 1px solid #F7A475;
+    border-radius: 15px;
+}
+
+.notes-label{
+    text-align: left;
+}
+
+.poster {
+    min-width: 250px;
+    width: 55%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
+
+/*PSEUDO CLASSES*/
+textarea:hover {
+    background: rgba( 255, 255, 255, .6);
+}

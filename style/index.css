@@ -1,12 +1,111 @@
-* {
-    font-family: Helvetica;
+/*MOBILE VIEW*/
+@media only screen and (max-width: 768px) {
+	.card{
+		width: 15rem;
+		margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+	}
 }
 
-.heading {
-    color: red;
-    font-family: Arial;
+/*MIDDLE VIEW*/
+@media only screen and (min-width: 768px) and (max-width: 1200px){
+	.card{
+		width: 11rem;
+	}
 }
 
-h1 {
-    color: blue;
+
+/*DESKTOP VIEW*/
+@media only screen and (min-width: 1200px) {
+    .card{
+    	width: 16rem;
+    }
+}
+
+/*NAV*/
+.mytheater-nav{
+	 border-bottom:3px solid #FE6A16;
+}
+
+.profileicon{
+	width: 30px;
+	height: 30px;
+}
+
+.homeicon{
+	width: 30px;
+	height: 30px;
+}
+
+
+/*BODY*/
+.second-row{
+	padding-top: 50px;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+
+/*SEARCH BAR*/
+.search-container{
+	justify-content: center;
+}
+
+.searchbar{
+	border: none;
+	border-radius: 20px;
+}
+
+.searchicon{
+	height: 30px;
+}
+
+.rateicon{
+	height: 24px;
+	padding-right: 8px;
+	margin-bottom: 6px;
+}
+
+.input-group-text.search-addon{
+	background-color: white;
+	border: none;
+	border-radius: 20px;
+}
+
+.movie-rating{
+	text-align: center;
+	padding-top: 3px;
+	font-size: 18px;
+}
+
+.main-footer{
+	height:100px;
+}
+
+.my-card{
+	box-shadow: 9px 4px 10px 7px #888888;
+	margin: 50px;
+}
+
+/*PSEUDO-CLASSES*/
+.card-img-top:active,
+.card-img-top:focus,
+.card-img-top:hover{
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
+input:hover, 
+input:active, 
+input:focus{
+	 outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
 }

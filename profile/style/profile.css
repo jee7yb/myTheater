@@ -1,0 +1,177 @@
+/*MOBILE VIEW*/
+@media only screen and (max-width: 768px) {
+	.profile-card{
+		width: 10rem;
+		margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+	}
+
+	.card{
+		width:12rem;
+		margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+	}
+
+	.profile-bio{
+		padding: 25px;
+		padding-left: 50px;
+		font-size: 17px;
+	}
+
+	.desktop-profile{
+		display: none;
+	}
+
+	.mobile-profile{
+		display:block;
+	}
+}
+
+/*MIDDLE VIEW*/
+@media only screen and (min-width: 768px) and (max-width: 1200px){
+	.profile-card{
+		width: 11rem;
+	}
+
+	.card{
+		width: 8rem;
+	}
+
+	.desktop-profile{
+		display: block;
+	}
+
+	.mobile-profile{
+		display:none;
+	}
+
+	.profile-bio{
+		padding-left: 35px;
+	}
+}
+
+
+/*DESKTOP VIEW*/
+@media only screen and (min-width: 1200px) {
+    .profile-card{
+    	width: 16rem;
+    }
+
+    .card{
+    	width: 14rem;
+    }
+
+	.desktop-profile{
+		display: block;
+	}
+
+	.mobile-profile{
+		display:none;
+	}
+
+	.profile-bio{
+		padding-top: 50px;
+		font-size: 20px;
+	}
+
+	.profile-pic-container{
+		padding-left: 65px;
+	}
+}
+
+/*NAV*/
+.mytheater-nav{
+	 border-bottom:3px solid #FE6A16;
+}
+
+.homeicon{
+	width: 30px;
+	height: 30px;
+}
+
+
+/*BODY*/
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+
+/*PROFILE*/
+.profile-card{
+	border-radius: 500px;
+}
+
+.profile-pic-container{
+	align-content: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.profileicon{
+	width: 30px;
+	height: 30px;
+}
+
+.pinfo-container{
+	padding-top: 50px;
+}
+
+.pinfo-line{
+	justify-content: right;
+	font-weight: 500;
+	font-size: 20px;
+	padding-bottom: 25px;
+}
+
+.profile-pic{
+	border-radius: 500px;
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
+
+/*SEARCH*/
+.search-container{
+	justify-content: center;
+}
+
+.searchbar{
+	border: none;
+	border-radius: 20px;
+}
+
+.searchicon{
+	height: 30px;
+}
+
+.input-group-text.search-addon{
+	background-color: white;
+	border: none;
+	border-radius: 20px;
+}
+
+.main-footer{
+	height:100px;
+}
+
+/*PSEUDO-CLASSES*/
+
+.card-img-top:active,
+.card-img-top:focus,
+.card-img-top:hover{
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
+input:hover, 
+input:active, 
+input:focus{
+	 outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}

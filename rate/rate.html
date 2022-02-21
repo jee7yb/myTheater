@@ -1,9 +1,64 @@
 <!DOCTYPE html>
+<!-- SOURCES USED:
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
+https://stackoverflow.com/questions/16841323/making-gradient-background-fill-page-with-css
+
+-->
 <html>
 <head>
-	<title>Rate</title>
+	<title>Rate Shangchi</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="style/rate.css">
 </head>
 <body>
+	<header class="row">
+		<div class="header col-12">
+			<nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="./../profile/profile.html">
+						<img src="./../style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
+						myTheater
+					</a>
+					<a href="./../index.html">
+					<img class="homeicon" src="./../style/imgs/homeicon.png">
+					</a>
+				</div>
+			</nav>
+		</div>
+	</header>
 
+	<section class="row">
+		<div class="col-md-4 col-sm-12">
+			<img class ="poster" src="./images/shangchi.jpg" alt="Shang-Chi Movie Poster">
+		</div>
+		<!-- TODO: figure out how to make these sliders orange [or black, blue is a no] -->
+		<div class="col-md-8 col-sm-12 rating">
+			<p class = "rating-title">Overall Rating</p>
+			1 &ensp; <input type="range" min="1" max="5" value="4" class="slider"> &ensp; 5
+			<p class = "rating-title">Cinematography</p>
+			1 &ensp; <input type="range" min="1" max="5" value="3" class="slider"> &ensp; 5
+			<p class = "rating-title">Acting</p>
+			1 &ensp; <input type="range" min="1" max="5" value="5" class="slider"> &ensp; 5
+		</div>
+	</section>
+
+	<section class = "container-fluid">
+		<div class = "row">
+			<div class = "col-md-4 col-sm-0"></div>
+			<div class = "col-md-6 col-sm-11 notes-row">
+				<div class = "row notes-label">
+					<label class = "rating-title" for="review">Notes</label>
+				</div>
+				<div class = "row notes-textbox">
+					<textarea class = "textarea" id="review" name="review" rows="4" cols="120" placeholder="Leave your review here"></textarea><br>
+					<!-- TODO: add some submit mechanism -->
+					<!-- <input type="submit" value="Submit"> -->
+				</div>
+			</div>
+			<div class = "col-md-3 col-sm-1"></div>
+		</div>
+	</section>
 </body>
 </html>
