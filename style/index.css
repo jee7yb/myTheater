@@ -1,3 +1,39 @@
+/*MOBILE VIEW*/
+@media only screen and (max-width: 768px) {
+	.card{
+		width: 15rem;
+		margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+	}
+}
+
+/*MIDDLE VIEW*/
+@media only screen and (min-width: 768px) and (max-width: 1200px){
+	.card{
+		width: 11rem;
+	}
+}
+
+
+/*DESKTOP VIEW*/
+@media only screen and (min-width: 1200px) {
+    .card{
+    	width: 16rem;
+    }
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+.card-img-top:active,
+.card-img-top:focus,
+.card-img-top:hover{
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
 input:hover, 
 input:active, 
 input:focus{
@@ -5,8 +41,6 @@ input:focus{
     -webkit-appearance:none;
     box-shadow: none !important;
 }
-
-
 
 .mytheater-nav{
 	 border-bottom:3px solid #FE6A16;
@@ -76,4 +110,9 @@ input:focus{
 
 .main-footer{
 	height:100px;
+}
+
+.my-card{
+	box-shadow: 9px 4px 10px 7px #888888;
+	margin: 50px;
 }
