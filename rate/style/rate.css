@@ -39,6 +39,7 @@
     }
 }
 
+/*NAV BAR*/
 .mytheater-nav{
      border-bottom:3px solid #FE6A16;
 }
@@ -53,11 +54,7 @@
     height: 30px;
 }
 
-
-.row {
-    width: 100%;
-}
-
+/*MAIN*/
 .slider {
     display:inline-block;
     width:70%;
@@ -84,6 +81,7 @@
     display:block;
     margin-left:auto;
     margin-right:auto;
+    box-shadow: 9px 4px 10px 7px #888888;
 }
 
 .header {
@@ -95,6 +93,8 @@ body {
     background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
 }
 
+
+/*PSEUDO CLASSES*/
 textarea:hover {
-    color:#FE6A16;
+    background: rgba( 255, 255, 255, .6);
 }
