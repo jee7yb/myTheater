@@ -28,20 +28,6 @@
     width:100%;
 }
 
-.card-img-top:active,
-.card-img-top:focus,
-.card-img-top:hover{
-    box-shadow: 9px 4px 10px 7px #888888;
-}
-
-input:hover, 
-input:active, 
-input:focus{
-	 outline:0px !important;
-    -webkit-appearance:none;
-    box-shadow: none !important;
-}
-
 .mytheater-nav{
 	 border-bottom:3px solid #FE6A16;
 }
@@ -58,12 +44,6 @@ input:focus{
 
 .second-row{
 	padding-top: 50px;
-}
-
-.background-color-2{
-	z-index:9;
-	margin: 20px;
-	background-color:black;
 }
 
 .bgcolor-layer{
@@ -115,4 +95,19 @@ input:focus{
 .my-card{
 	box-shadow: 9px 4px 10px 7px #888888;
 	margin: 50px;
+}
+
+/*PSEUDO-CLASSES*/
+.card-img-top:active,
+.card-img-top:focus,
+.card-img-top:hover{
+    box-shadow: 9px 4px 10px 7px #888888;
+}
+
+input:hover, 
+input:active, 
+input:focus{
+	 outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
 }
