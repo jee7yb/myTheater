@@ -102,10 +102,18 @@ body {
     box-shadow: 9px 4px 10px 7px #888888;
 }
 
+/*TODO: Need one more pseudo class to fulfill requirements*/
+
 input:hover, 
 input:active, 
 input:focus{
 	 outline:0px !important;
     -webkit-appearance:none;
     box-shadow: none !important;
+}
+
+a.dropdown-item:hover,
+a.dropdown-item:active,
+a.dropdown-item:focus{
+	background: #FAE2D5;
 }
