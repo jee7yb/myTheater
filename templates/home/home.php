@@ -11,25 +11,27 @@
 </head>
 
 <body>
- <!-- Header, Nav bar --> 
-<header class="row">
-	<div class = "header col-12">
-		<nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="?command=profile">
-					<img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
-					myTheater
-				</a>
-				<a class="navbar-brand" href="?command=logout">Logout</a>
-				<a href="?command=home">
-				<img class="homeicon" alt = "Home icon redirecting to the home page" src="templates/home/style/imgs/homeicon.png">
-				</a>
-			</div>
-		</nav>
-	</div>
-</header>
+        <header class = "row">
+            <div class = "header col-12">
+                <nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
+                    <div class = "container-fluid">
+                        <a class = "navbar-brand">
+                            <img src="templates/home/style/imgs/logo.png" alt="Profile Icon" class="d-inline-block align-text-top logoicon">
+                        </a>
 
-<!-- TODO: When movie database is created, use JavaScript to repeat card div x times -->
+                        <div class = "d-flex align-items-center">                            
+                            <a class="navbar-brand" href="?command=profile">
+                                <img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
+                            </a>
+                            <a href = "?command=logout" class = "btn btn-light">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
 <div class = "container">
 <!-- Search Row -->
 	<div class = "row">

@@ -1,6 +1,7 @@
 <?php
 
 // AUTHORS: Rachel Zhao
+// TODO: filter movies, login page has two steps, new profile page
 
 spl_autoload_register(function ($classname) {
     include "classes/$classname.php";

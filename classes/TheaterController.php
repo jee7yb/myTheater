@@ -1,6 +1,6 @@
 <?php
 
-// AUTHORS: Rachel Zhao
+// AUTHORS: Rachel Zhao and Jessie Eoff
 
 class TheaterController {
 
@@ -122,7 +122,10 @@ class TheaterController {
 
 
     public function logout() {
-        include "templates/login.php";
+            if(isset($_SESSION["name"])){
+                session_destroy();
+                header("Location: ?command=login");
+            }
     }
 
 }

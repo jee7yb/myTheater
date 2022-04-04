@@ -1,0 +1,41 @@
+/*Author: Jessie Eoff*/
+
+/*NAV*/
+.mytheater-nav{
+	 border-bottom:3px solid #FE6A16;
+}
+
+.logoicon{
+	width: 75px;
+	height: 60px;
+}
+
+.profileicon{
+	width: 40px;
+	height: 40px;
+}
+
+/*BODY*/
+body {
+    background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.second-row{
+	padding-top: 50px;
+}
+
+.header {
+    height:100px;
+    width:100%;
+}
+
+.form-col{
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.login-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
