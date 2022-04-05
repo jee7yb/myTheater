@@ -88,11 +88,15 @@
 	 border-bottom:3px solid #FE6A16;
 }
 
-.homeicon{
-	width: 30px;
-	height: 30px;
+.logoicon{
+	width: 75px;
+	height: 60px;
 }
 
+.profileicon{
+	width: 40px;
+	height: 40px;
+}
 
 /*BODY*/
 body {
@@ -102,6 +106,16 @@ body {
 .header {
     height:100px;
     width:100%;
+}
+
+.rateicon{
+	height: 24px;
+	padding-right: 8px;
+	margin-bottom: 6px;
+}
+
+.delete-btn{
+	margin-bottom: 15px;
 }
 
 
@@ -135,6 +149,10 @@ body {
 .profile-pic{
 	border-radius: 500px;
     box-shadow: 9px 4px 10px 7px #888888;
+}
+
+.main-footer{
+	height:100px;
 }
 
 

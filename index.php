@@ -16,8 +16,13 @@ spl_autoload_register(function($classname) {
 
 // Parse the query string for command
 $command = "login";
+$sort = "none";
 if (isset($_GET["command"]))
     $command = $_GET["command"];
+
+if(isset($_GET["sort"])){
+	$sort = $_GET["sort"];
+}
 
 // If the user's email is not set in the cookies, then it's not
 // a valid session (they didn't get here from the login page),
@@ -29,5 +34,5 @@ if (!isset($_SESSION["email"])) {
 }
 
 // Instantiate the controller and run
-$theater = new TheaterController($command);
+$theater = new TheaterController($command, $sort);
 $theater->run();

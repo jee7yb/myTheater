@@ -1,4 +1,4 @@
-/*Author: Rachel Zhao*/
+/*Author: Jessie Eoff and Rachel Zhao*/
 
 /*MOBILE VIEW*/
 @media only screen and (max-width: 768px) {
@@ -46,19 +46,31 @@
      border-bottom:3px solid #FE6A16;
 }
 
-.profileicon{
-    width: 30px;
-    height: 30px;
+.logoicon{
+    width: 75px;
+    height: 60px;
 }
 
-.homeicon{
-    width: 30px;
-    height: 30px;
+.profileicon{
+    width: 40px;
+    height: 40px;
 }
 
 /*BODY*/
 body {
     background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.second-row{
+    height:60px;
+}
+
+.login-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 40px;
 }
 
 .header {
