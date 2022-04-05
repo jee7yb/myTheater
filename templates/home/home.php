@@ -11,6 +11,7 @@
 </head>
 
 <body>
+	<!-- HEADER / NAV -->
     <header class = "row">
         <div class = "header col-12">
             <nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
@@ -33,61 +34,66 @@
     </header>
 
 <div class = "container">
-<!-- Search Row -->
+	<!-- Search Functionality -->
 	<div class = "row">
 		<div class="input-group p-3 search-container">
-  			<span class="input-group-text search-addon"><img src="templates/home/style/imgs/searchicon.png" class = "searchicon" alt = "..."></span>
-			  	<input type="text" class = "searchbar col-md-4" placeholder="Search" aria-label="Username">
-				<div class="input-group-text search-addon">
-					<div class = "dropdown">
-						<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>
-				  		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						    <a class="dropdown-item" href="?command=home&sort=alphabetized">Alphabetized</a>
-						    <a class="dropdown-item" href="?command=home&sort=none">Popularity</a>
-						    <a class="dropdown-item" href="?command=home&sort=rating">Rating</a>
-					  	</div>
+  			<span class="input-group-text search-addon">
+  				<img src="templates/home/style/imgs/searchicon.png" class = "searchicon" alt = "...">
+  			</span>
+			 <input type="text" class = "searchbar col-md-4" placeholder="Search" aria-label="Username">
+			<div class="input-group-text search-addon">
+				<div class = "dropdown">
+					<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>
+			  		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					    <a class="dropdown-item" href="?command=home&sort=alphabetized">Alphabetized</a>
+					    <a class="dropdown-item" href="?command=home&sort=none">Popularity</a>
+					    <a class="dropdown-item" href="?command=home&sort=rating">Rating</a>
+					    <a class="dropdown-item" href="?command=home&sort=json">JSON</a>
 				  	</div>
-				</div>
+			  	</div>
+			</div>
 		</div>
 	</div>
+
+	<!-- Movies Display Row -->
 	<div class = "row">
 	<?php
-	foreach($_SESSION["movies"] as $key => $value){
-		$poster = $value["poster"];
-		?>
-		<div class = "col-md-3 col-sm-6 col-10">	
-			<form action = "?command=rate" method = "post" class = "card card-img-top" style = "align-items: center;">
-				<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
-				<input type="image" class = "card-img-top" name="placeholder" src="<?=$poster?>" value="<?=$value["title"]?>"/>
-				<div>
-			<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "..."><?=$value['rating']?></p>
+		//checking for temporary JSON requirement 
+		if (isset($_SESSION["json"])){
+			echo $_SESSION["json"];
+		}
+		//else, displaying movies requested for
+		else {
+			foreach($_SESSION["movies"] as $key => $value){
+				$poster = $value["poster"];
+	?>
+				<div class = "col-md-3 col-sm-6 col-10">	
+					<form action = "?command=rate" method = "post" class = "card card-img-top" style = "align-items: center;">
+						<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
+						<input type="image" class = "card-img-top" name="placeholder" src="<?=$poster?>" value="<?=$value["title"]?>"/>
+						<div>
+							<p class = "movie-rating">
+								<img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "..."><?=$value['rating']?>
+							</p>
+						</div>
+					</form>
 				</div>
-			</form>
-		</div>
-		<?php
-	}
-
+	<?php
+			}
+		}
 	?>
 	</div>
 
-	<div class="row">
-		<!-- <div class = "col-md-3 col-sm-6">
-			<div class="card">
-				<a href = "?command=rate">
-					<img src="templates/home/style/imgs/shangchi.png" class="card-img-top" alt="Shangchi">
-				</a>
-			</div>
-			<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "...">4.5</p>
-		</div> --> 
-		<!-- col-md-3 col-sm-6 -->
-	</div>
-
-<!-- Do more to the footer [universal for all pages] -->
+<!-- FOOTER // TODO -->
 <footer class = "main-footer">
     <small class = "container">&copy;2022 CS 4640 Jessie Eoff and Rachel Zhao</small>
 </footer>
+
+
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </body>
 </html>

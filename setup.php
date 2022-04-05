@@ -1,13 +1,12 @@
 <?php
 
 // AUTHORS: Rachel Zhao and Jessie Eoff
-// TODO: filter movies, login page has two steps, new profile page
 
 spl_autoload_register(function ($classname) {
     include "classes/$classname.php";
 });
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+// mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); //ONLY INCLUDE FOR TESTING
 $db = new mysqli(Config::$db["host"], Config::$db["user"],
                  Config::$db["pass"], Config::$db["database"]);
 
@@ -40,7 +39,7 @@ $db->query("create table review (
             rid int not null auto_increment,
             uid int not null,
             mid int not null,
-            rating int not null,
+            rating text not null,
             reviewText text not null,
             primary key (rid),
             foreign key (uid) references user(uid),
@@ -60,7 +59,4 @@ foreach ($movies as $key=>$value) {
         echo "Could not add movie to database";
     }
 }
-
-
-print_r($data);
-
+// print_r($data); //ONLY INCLUDE FOR TESTING

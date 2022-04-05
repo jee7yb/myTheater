@@ -108,6 +108,16 @@ body {
     width:100%;
 }
 
+.rateicon{
+	height: 24px;
+	padding-right: 8px;
+	margin-bottom: 6px;
+}
+
+.delete-btn{
+	margin-bottom: 15px;
+}
+
 
 /*PROFILE*/
 .profile-card{
@@ -139,6 +149,10 @@ body {
 .profile-pic{
 	border-radius: 500px;
     box-shadow: 9px 4px 10px 7px #888888;
+}
+
+.main-footer{
+	height:100px;
 }
 
 

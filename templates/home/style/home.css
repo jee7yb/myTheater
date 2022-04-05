@@ -28,10 +28,6 @@
     }
 }
 
-.card-img-top{
-	align-items:center;
-}
-
 /*NAV*/
 .mytheater-nav{
 	 border-bottom:3px solid #FE6A16;
@@ -121,11 +117,4 @@ a.dropdown-item:hover,
 a.dropdown-item:active,
 a.dropdown-item:focus{
 	background: #FAE2D5;
-}
-
-.wrapper {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;
-	grid-auto-rows: 10px;
 }

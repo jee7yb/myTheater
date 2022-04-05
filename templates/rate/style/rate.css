@@ -56,13 +56,13 @@
     height: 40px;
 }
 
-.second-row{
-    height:60px;
-}
-
 /*BODY*/
 body {
     background: linear-gradient(180deg, #EDEDED 0%, rgba(237, 237, 237, 0) 70.83%, rgba(247, 164, 117, 0.557692) 91.15%, #FE6A16 97.92%) fixed;
+}
+
+.second-row{
+    height:60px;
 }
 
 .login-row{
