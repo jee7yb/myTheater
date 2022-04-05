@@ -11,22 +11,26 @@
 </head>
 <body>
 <!-- Header, Navbar -->
-	<header class="row">
-		<div class="header col-12">
-			<nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="?command=profile">
-						<img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
-						myTheater
-					</a>
-					<a class="navbar-brand" href="?command=logout">Logout</a>
-					<a href="?command=home">
-					<img class="homeicon" alt = "Home icon redirecting to the home page" src="templates/home/style/imgs/homeicon.png">
-					</a>
-				</div>
-			</nav>
-		</div>
-	</header>
+    <header class = "row">
+        <div class = "header col-12">
+            <nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
+                <div class = "container-fluid">
+                    <a class = "navbar-brand" href = "?command=home">
+                        <img src="templates/home/style/imgs/logo.png" alt="Profile Icon" class="d-inline-block align-text-top logoicon">
+                    </a>
+
+                    <div class = "d-flex align-items-center">                            
+                        <a class="navbar-brand" href="?command=profile">
+                            <img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
+                        </a>
+                        <a href = "?command=logout" class = "btn btn-light">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
 	<!-- Profile pic, info, and bio for deskop view (>768px) -->
 	<div class = "container desktop-profile">
@@ -35,14 +39,6 @@
 				<div class = "row pinfo-line">Welcome, <?=$user["name"]?>!</div>
 				<div class = "row pinfo-line"><?=$user["email"]?></div>
 				<div class = "row pinfo-line"><?=$user["phone"]?></div>
-			</div>
-			<div class = "col-md-3 col-sm-6 profile-pic-container">
-				<div class="card profile-card">
-					<img src="templates/profile/imgs/profilepic.jpg" class="card-img-top profile-pic" alt="Profile Picture for Desktop View">
-				</div>
-			</div>
-			<div class = "col-md-5 profile-bio">
-				I am a movie enthusiast. My favorite movie is Finding nemo. My favorite actor is Brad Pitt and I value good directorship.
 			</div>
 		</div>
 	</div>
@@ -86,12 +82,13 @@
 
 	<!-- TODO: make grid much smaller than main page [maybe 6xn] -->
 	<!-- TODO: add personal rating at the bottom of each movie -->
+
 	<div class = "container">
 		<div class = "row">
 			<?php 
 			foreach ($ratedMovies as $key=>$value) { ?>
 				<div class= "col-md-3 col-sm-6">
-						<form action="?command=rate" method="post">
+						<form action="?command=rate" method="post" class = "card">
 							<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
 							<input type="image" name="placeholder" src="<?=$value["poster"]?>" value="<?=$value["title"]?>"/>
 						</form>

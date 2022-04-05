@@ -23,37 +23,45 @@
         </header>
         <div calss = "container-fluid">
             <div class = "row">
-                <div class = "col-2">
+                <div class = "col-1 col-sm-2">
                 </div>
-                <div class = "col-8">
+                <div class = "col-10 col-sm-8">
                     <h1>Welcome to myTheater</h1>
                     <p> Login below to access your movie ratings.</p>
                 </div>
-                <div class = "col-2">
+                <div class = "col-1 col-sm-2">
                 </div>
             </div>
             <?php
             if (!empty($error_msg)){
                 echo "<div class = 'row'>
-                    <div class = 'col-4'>
+                    <div class = 'col-lg-4 col-sm-3 col-2'>
                     </div>
-                    <div class = 'col-4'>
+                    <div class = 'col-lg-4 col-sm-6 col-8'>
                     <div class='alert alert-danger'>$error_msg</div>
                     </div>
-                    <div class = 'col-4'>
+                    <div class = 'col-lg-4 col-sm-3 col-2'>
                     </div>
                 </div>";
             }
             ?>
             <form action="?command=login" method="post">
                 <div class = "row">
-                    <div class = "col-lg-4 col-sm-3 col-2">
+                    <div class = "col-lg-4 col-sm-3 col-1">
                     </div>
-                    <div class = "col-lg-4 col-sm-6 col-8">
-                        <div class = "row form-col">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name"/>
+                    <div class = "col-lg-4 col-sm-6 col-10 login-card">
+                        <div class = "row login-top form-col">
+                            <div class = "col">                                
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"/>
+                                </div>
+                            </div>
+                            <div class = "col">                                
+                                <div class="mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control"/>
+                                </div>
                             </div>
                         </div>
                         <div class = "row form-col">
@@ -78,7 +86,7 @@
                             <button type="submit" class="btn btn-dark">Login</button>
                         </div>
                     </div>
-                    <div class = "col-lg-4 col-sm-3 col-2">
+                    <div class = "col-lg-4 col-sm-3 col-1">
                     </div>
                 </div>
             </form>

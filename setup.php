@@ -1,6 +1,6 @@
 <?php
 
-// AUTHORS: Rachel Zhao
+// AUTHORS: Rachel Zhao and Jessie Eoff
 // TODO: filter movies, login page has two steps, new profile page
 
 spl_autoload_register(function ($classname) {
@@ -29,6 +29,7 @@ $db->query("create table movie (
             mid int not null auto_increment,
             title text not null,
             poster text not null,
+            rating text not null,
             primary key (mid)
             );");
 $db->query("set FOREIGN_KEY_CHECKS=1;");
@@ -50,10 +51,11 @@ $db->query("create table review (
 $data = json_decode(file_get_contents("https://api.themoviedb.org/3/movie/popular?api_key=ea4c9f0b82e70498eab13ca7d40893e9&language=en-US&page=1"), true);
 $movies = $data["results"];
 
-$stmt = $db->prepare("insert into movie (title, poster) values (?, ?);");
+$stmt = $db->prepare("insert into movie (title, poster, rating) values (?, ?, ?);");
 foreach ($movies as $key=>$value) {
     $posterPath = "https://image.tmdb.org/t/p/w500" . $value["poster_path"];
-    $stmt->bind_param("ss", $value["title"], $posterPath);
+    $rand_int = mt_rand(150,500) / 100;
+    $stmt->bind_param("sss", $value["title"], $posterPath, $rand_int);
     if (!$stmt->execute()) {
         echo "Could not add movie to database";
     }

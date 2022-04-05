@@ -11,26 +11,26 @@
 </head>
 
 <body>
-        <header class = "row">
-            <div class = "header col-12">
-                <nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
-                    <div class = "container-fluid">
-                        <a class = "navbar-brand">
-                            <img src="templates/home/style/imgs/logo.png" alt="Profile Icon" class="d-inline-block align-text-top logoicon">
-                        </a>
+    <header class = "row">
+        <div class = "header col-12">
+            <nav class="navbar navbar-light bg-light fixed-top mytheater-nav">
+                <div class = "container-fluid">
+                    <a class = "navbar-brand" href = "?command=home">
+                        <img src="templates/home/style/imgs/logo.png" alt="Profile Icon" class="d-inline-block align-text-top logoicon">
+                    </a>
 
-                        <div class = "d-flex align-items-center">                            
-                            <a class="navbar-brand" href="?command=profile">
-                                <img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
-                            </a>
-                            <a href = "?command=logout" class = "btn btn-light">
-                                Logout
-                            </a>
-                        </div>
+                    <div class = "d-flex align-items-center">                            
+                        <a class="navbar-brand" href="?command=profile">
+                            <img src="templates/home/style/imgs/profileicon.png" alt="Profile Icon" class="d-inline-block align-text-top profileicon">
+                        </a>
+                        <a href = "?command=logout" class = "btn btn-light">
+                            Logout
+                        </a>
                     </div>
-                </nav>
-            </div>
-        </header>
+                </div>
+            </nav>
+        </div>
+    </header>
 
 <div class = "container">
 <!-- Search Row -->
@@ -42,18 +42,35 @@
 					<div class = "dropdown">
 						<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>
 				  		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						    <a class="dropdown-item" href="#">Alphabetized</a>
-						    <a class="dropdown-item" href="#">Release Date</a>
-						    <a class="dropdown-item" href="#">Rating</a>
+						    <a class="dropdown-item" href="?command=home&sort=alphabetized">Alphabetized</a>
+						    <a class="dropdown-item" href="?command=home&sort=none">Popularity</a>
+						    <a class="dropdown-item" href="?command=home&sort=rating">Rating</a>
 					  	</div>
 				  	</div>
 				</div>
 		</div>
 	</div>
+	<div class = "row">
+	<?php
+	foreach($_SESSION["movies"] as $key => $value){
+		$poster = $value["poster"];
+		?>
+		<div class = "col-md-3 col-sm-6 col-10">	
+			<form action = "?command=rate" method = "post" class = "card card-img-top" style = "align-items: center;">
+				<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
+				<input type="image" class = "card-img-top" name="placeholder" src="<?=$poster?>" value="<?=$value["title"]?>"/>
+				<div>
+			<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "..."><?=$value['rating']?></p>
+				</div>
+			</form>
+		</div>
+		<?php
+	}
 
-<div class="row">
-<!-- TODO: maybe change the layout to have 5xn instead of 4xn, and mobile to have 2xn -->
-	<!-- TODO: change the bottom of the movie to include name, director, and release date [not just the rating] -->
+	?>
+	</div>
+
+	<div class="row">
 		<!-- <div class = "col-md-3 col-sm-6">
 			<div class="card">
 				<a href = "?command=rate">
@@ -63,28 +80,7 @@
 			<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "...">4.5</p>
 		</div> --> 
 		<!-- col-md-3 col-sm-6 -->
-		<div class="col-md-3 col-sm-6">
-		<!-- <div class = "row row-cols-3"> -->
-					<?php
-					$db = new Database();
-					$result = $db->query("select * from movie");
-					foreach ($result as $key => $value) { ?>
-						<form action="?command=rate" method="post">
-						<?php 
-						$poster = $value["poster"];
-						echo '<div class="col">';
-						?>
-						<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
-						<input type="image" name="placeholder" src="<?=$poster?>" value="<?=$value["title"]?>"/>
-						<?php
-						echo $value["title"];
-						echo '</div>';
-						echo '</form>';
-					}
-					
-					?>
-					</div>
-				</div>
+	</div>
 
 <!-- Do more to the footer [universal for all pages] -->
 <footer class = "main-footer">

@@ -5,11 +5,13 @@
 class TheaterController {
 
     private $command;
+    private $sort;
     private $db;
 
-    public function __construct($command) {
+    public function __construct($command, $sort) {
         $this->command = $command;
         $this->db = new Database();
+        $this -> sort = $sort;
     }
 
     public function run() {
@@ -75,6 +77,18 @@ class TheaterController {
             "id" => $this->db->query("select uid from user where email = ?;", "s", $_SESSION["email"]),
             "phone" => $_SESSION["phone"],
         ];
+
+        $db = new Database();
+        if ($this -> sort === "none"){
+            $result = $db -> query ("select * from movie");
+            $_SESSION["movies"] = $result;
+        } else if ($this -> sort === "alphabetized"){
+            $result = $db -> query ("select * from movie order by title");
+            $_SESSION["movies"] = $result;
+        } else if ($this -> sort === "rating"){
+            $result = $db -> query ("select * from movie order by rating desc");
+            $_SESSION["movies"] = $result;
+        }
 
         if (isset($_POST["deleteRating"])) {
             $this->db->query("delete from review where mid = ? and uid = ?;", "ii", $_POST["deleteRating"], $user["id"][0]["uid"]);
