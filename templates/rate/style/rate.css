@@ -107,6 +107,11 @@ body {
     box-shadow: 9px 4px 10px 7px #888888;
 }
 
+.rateicon{
+    height: 24px;
+    padding-right: 8px;
+    margin-bottom: 6px;
+}
 
 /*PSEUDO CLASSES*/
 textarea:hover {

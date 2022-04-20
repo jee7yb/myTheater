@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Jessie Eoff and Rachel Zhao">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
 	<link rel="stylesheet" type="text/css" href="templates/profile/style/profile.css">
 </head>
 
@@ -36,9 +35,31 @@
 	<div class = "container desktop-profile">
 		<div class = "row">
 			<div class = "col-md-4 col-sm-6 pinfo-container">
-				<div class = "row pinfo-line"><?=$user["name"]?>'s Profile!</div>
-				<div class = "row pinfo-line"><?=$user["email"]?></div>
-				<div class = "row pinfo-line"><?=$user["phone"]?></div>
+				
+				<div ondblclick="nameUpdate();">
+					<div class = "row pinfo-line" id = "name-text">
+						<span id = "name-text-update"><?=$user["name"]?>'s Profile!</span>
+					</div>					
+					<div class = "row pinfo-line" id = "name-input" style = "display: none;">
+                          <input type="text" value = "<?=$user["name"]?>'s Profile!" class="form-control" id="name-input-update"/>
+					</div>
+				</div>
+				<div ondblclick="emailUpdate();">
+					<div class = "row pinfo-line" id = "email-text">
+						<span id = "email-text-update"><?=$user["email"]?></span>
+					</div>					
+					<div class = "row pinfo-line" id = "email-input" style = "display: none;">
+                          <input type="text" value = "<?=$user["email"]?>" class="form-control" id="email-input-update"/>
+					</div>
+				</div>
+				<div ondblclick="phoneUpdate();">
+					<div class = "row pinfo-line" id = "phone-text">
+						<span id = "phone-text-update"><?=$user["phone"]?></span>
+					</div>					
+					<div class = "row pinfo-line" id = "phone-input" style = "display: none;">
+                          <input type="text" value = "<?=$user["phone"]?>" class="form-control" id="phone-input-update"/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -47,7 +68,7 @@
 	<div class = "container mobile-profile">
 		<div class = "row">
 			<div class = "col-6">
-				<div class = "row pinfo-line"><?=$user["name"]?>'s Profile!</div>
+				<aside ondblclick="editProfile();"><div class = "row pinfo-line"><span id = "try"><?=$user["name"]?>'s Profile!</span></div></aside>
 				<div class = "row pinfo-line"><?=$user["email"]?></div>
 				<div class = "row pinfo-line"><?=$user["phone"]?></div>
 			</div>
@@ -112,9 +133,57 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+    <script>
+
+    	function nameUpdate(){
+    		if ($("#name-input").css('display') === "none"){
+    			$("#name-input").css('display', 'flex');
+    		} else {
+    			$("#name-input").css('display', 'none');
+    		}
+
+    		if ($("#name-text").css('display') === "none"){
+    			$("#name-text-update").html($("#name-input-update").val());
+    			$("#name-text").css('display', 'flex');
+    		} else {
+    			$("#name-text").css('display', 'none');
+    		}
+    	}
+
+    	function emailUpdate(){    		
+			if ($("#email-input").css('display') === "none"){
+    			$("#email-input").css('display', 'flex');
+    		} else {
+    			$("#email-input").css('display', 'none');
+    		}
+
+    		if ($("#email-text").css('display') === "none"){
+    			$("#email-text-update").html($("#email-input-update").val());
+    			$("#email-text").css('display', 'flex');
+    		} else {
+    			$("#email-text").css('display', 'none');
+    		}
+    	}
+
+    	function phoneUpdate(){    		
+			if ($("#phone-input").css('display') === "none"){
+    			$("#phone-input").css('display', 'flex');
+    		} else {
+    			$("#phone-input").css('display', 'none');
+    		}
+
+    		if ($("#phone-text").css('display') === "none"){
+    			$("#phone-text-update").html($("#phone-input-update").val());
+    			$("#phone-text").css('display', 'flex');
+    		} else {
+    			$("#phone-text").css('display', 'none');
+    		}
+    	}
+    </script>
 	
 </body>
 </html>

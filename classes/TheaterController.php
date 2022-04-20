@@ -31,7 +31,16 @@ class TheaterController {
             default:
                 $this->login();
                 break;
+            // case "default":
+            // default:
+            //     $this->default();
+            //     break;
         }
+    }
+
+    public function default(){
+
+        include "templates/login.php";
     }
 
     public function login() {
@@ -66,22 +75,16 @@ class TheaterController {
             } 
             // else, this is a new user
             else {
-                //email validation
-                if(!preg_match("/^[A-Za-z0-9\+\-_][A-Za-z0-9\+\-_\.]*[A-Za-z0-9\+\-_]+[@][A-Za-z0-9\-]+[\.][A-Za-z0-9\-\.]*[A-Za-z0-9\-]+/", $_POST["email"])){
-                    $error_msg = "Please enter a valid email";
-                } 
-                //else, all information is good to go and a new user is created
-                else {
-                    $insert = $this->db->query("insert into user (email, name, password, phone) values (?, ?, ?, ?);", "ssss", 
-                    $_POST["email"], $_POST["name"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["phone"]);
-                    if ($insert === false) {
-                        $error_msg = "Error inserting user";
-                    } else {
-                        $_SESSION["name"] = $_POST["name"];
-                        $_SESSION["email"] = $_POST["email"];
-                        $_SESSION["phone"] = $_POST["phone"];
-                        header("Location: ?command=home");
-                    }
+                //all information is good to go and a new user is created
+                $insert = $this->db->query("insert into user (email, name, password, phone) values (?, ?, ?, ?);", "ssss", 
+                $_POST["email"], $_POST["name"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["phone"]);
+                if ($insert === false) {
+                    $error_msg = "Error inserting user";
+                } else {
+                    $_SESSION["name"] = $_POST["name"];
+                    $_SESSION["email"] = $_POST["email"];
+                    $_SESSION["phone"] = $_POST["phone"];
+                    header("Location: ?command=home");
                 }
             }
         }
