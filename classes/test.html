@@ -1,3 +1,69 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>JQuery Example</title>
+<style>
+.hover {
+    color: red;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<table id="theTable" class="tableClass">
+	<caption>Rank fun things to do in the spring at UVA</caption>
+	<tr>
+	<td>
+	<ul>
+		<li>Going to a UVA Basketball Game</li>
+		<li>Playing frisbee on the Lawn</li>
+		<li>Biking on Rivanna Trail</li>
+		<li>Hiking the Appalachian Trail </li>
+		<li>Rock Climbing</li>
+		<li>Writing Wordle clones in CS 4640</li>
+		<li>Playing Mario Party Superstars on Switch</li>
+	</ul>
+	</td>
+	</tr>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("ul li").hover(
+			function() {
+				$(this).addClass("hover");
+			}, function() {
+				$(this).removeClass("hover");
+			}
+		);
+
+		$("ul li").each(function(index, element) {
+			$(this).click(function() {
+				var numCells = $("table#theTable td").length;
+
+				if (numCells == 1) 
+					$("table#theTable tr").append("<td><ol></ol></td>");
+				
+				$(this).remove();
+
+				$("ol").append(element);
+
+				var old = $("ul li").length;
+
+				if (old == 0) {
+					$("ul").remove();
+					$("table#theTable tr td:eq(0)").remove();
+				}
+			});
+		});
+	});
+</script>
+</body>
+</html> -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +72,10 @@
     <meta name="author" content="Jessie Eoff and Rachel Zhao">
     <meta name="description" content="myTheater Login Page">  
     <title>myTheater Login</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="templates/login.css">
@@ -60,7 +130,7 @@
         ?>
 
         <!-- LOGIN FORM -->
-        <form action = "?command=login" method = "post">
+        <!-- <form method = "post" id = "login-form"> -->
             <div class = "row">
                 <div class = "col-lg-4 col-sm-3 col-1"></div>
                 <div class = "col-lg-4 col-sm-6 col-10 login-card">
@@ -87,21 +157,18 @@
                     <div class = "row form-col">
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" placeholder = "###-###-####" class="form-control" id="phone" name="phone"/>
+                            <input type="tel" pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "###-###-####" class="form-control" id="phone" name="phone"/>
                         </div>
                     </div>
                     <div class = "row form-col">                            
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password"/>
-                            <div class = "password-text">
-                                Password must be at least 8 characters containing !,&,# or %. 
-                            </div>
                         </div>
                     </div>
                     <!-- FORM SUBMISSION -->
                     <div class = "login-row">
-                        <button type = "submit" class="btn btn-dark" id = "login-btn" disabled>Login</button>
+                        <button class="btn btn-dark" onclick = "validate();">Login</button>
                     </div>
                 </div>
                 <div class = "col-lg-4 col-sm-3 col-1"></div>
@@ -109,77 +176,21 @@
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-
     <script type = "text/javascript">
-
-        function passwordValidate() {
-            var pass = document.getElementById("password");
-
-            var passval = pass.value;
-
-            var passRegex = new RegExp('^[A-za-z0-9!#&%]*[!#%&]+[A-za-z0-9!#&%]*$');
-
-            if(passval.length < 8){
-                pass.classList.add("is-invalid");
-                return false;
-            } else if (!passRegex.test(passval)){
-                pass.classList.add("is-invalid");
-                return false;
-            }
-            else {
-                pass.classList.remove("is-invalid");
-                return true;
-            }
-        }
-
-        function emailValidate() {
-            var email = document.getElementById("email");
-            var emailval = email.value;
-            var emailRegex = new RegExp('^[A-Za-z0-9\+\-_][A-Za-z0-9\+\-_\.]*[A-Za-z0-9\+\-_]+[@][A-Za-z0-9\-]+[\.][A-Za-z0-9\-\.]*[A-Za-z0-9\-]+$');
-
-            if (!emailRegex.test(emailval)){
-                email.classList.add("is-invalid");
-                return false;
-            } else {
-                email.classList.remove("is-invalid");
-                return true;
-            }
-
-        }
-
-        function phoneValidate(){
-            var phone = document.getElementById("phone");
-            var phoneval = phone.value;
-
-            var phoneRegex = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$');
-
-            if (!phoneRegex.test(phoneval)){
-                phone.classList.add("is-invalid");
-                return false;
-            } else {
-                phone.classList.remove("is-invalid");
-                return true;
-            }
-        }
-
+	    $("#error_msg").html("HELP ME");
         function validate(){
-            var loginbtn = document.getElementById("login-btn");
-            if (emailValidate() && passwordValidate() && phoneValidate()){
-                loginbtn.disabled = false;
-            } else {
-                loginbtn.disabled = true;
-            }
+        	$("#name").val("BIT");
         }
-
-        document.getElementById("password").addEventListener("keyup", passwordValidate);
-        document.getElementById("email").addEventListener("keyup", emailValidate);
-        document.getElementById("phone").addEventListener("keyup", phoneValidate);
-        document.getElementById("phone").addEventListener("keyup", validate);
-        document.getElementById("password").addEventListener("keyup", validate);
-        document.getElementById("email").addEventListener("keyup", validate);
+        //     $document.ready()
+        //     $("#name").value = "BIT";
+        //     $(".name").value = "BIT";
+        //     if (!document.getElementById("email").value.match("/^[A-Za-z0-9\+\-_][A-Za-z0-9\+\-_\.]*[A-Za-z0-9\+\-_]+[@][A-Za-z0-9\-]+[\.][A-Za-z0-9\-\.]*[A-Za-z0-9\-]+/")){
+        //         document.getElementById("lname").value = "BOB";
+        //         document.getElementById("error_msg").innerHTML = "PLEASE";
+        //     } else {
+        //         document.getElementById("login-form").submit();
+        //     }
+        // }
     </script>
 </body>
 </html>
