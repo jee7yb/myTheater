@@ -27,6 +27,9 @@ class TheaterController {
             case "rate":
                 $this->rate();
                 break;
+            case "jsonreq":
+                $this->jsonreq();
+                break;
             case "login":
             default:
                 $this->login();
@@ -140,7 +143,37 @@ class TheaterController {
         $userReviews = $this->db->query("select * from review where uid = ?;", "i", $user["id"][0]["uid"]);
         $ratedMovies = $this->db->query("select * from movie where mid in (select mid from review where uid = ?);", "i", $user["id"][0]["uid"]);
 
+        $db = new Database();
+
+        //different queries depending on sorting request
+        if ($this -> sort === "none"){
+            $result = $db -> query ("select * from movie where mid in (select mid from review where uid = ?);", "i", $user["id"][0]["uid"]);
+            unset($_SESSION["json"]);
+            $ratedMovies = $result;
+        } else {
+            $result = $db -> query ("select * from movie where mid in (select mid from review where uid = ?) order by title;", "i", $user["id"][0]["uid"]);
+            unset($_SESSION["json"]);
+            $ratedMovies = $result;
+        }
+
+
+        
         include "templates/profile/profile.php";
+    }
+
+    public function jsonreq() {
+
+        $user = [
+            "name" => $_SESSION["name"],
+            "email" => $_SESSION["email"],
+            "id" => $this->db->query("select uid from user where email = ?;", "s", $_SESSION["email"]),
+            "phone" => $_SESSION["phone"],
+        ];
+
+        $counter = $this->db->query("select COUNT(*) as count from movie where mid in (select mid from review where uid = ?)", "i", $user["id"][0]["uid"]);
+        header("Content-type: application/json");
+        $json = json_encode($counter, JSON_PRETTY_PRINT);
+        echo $json;
     }
 
     public function rate() {

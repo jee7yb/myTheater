@@ -58,11 +58,12 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
 				<label class = "rating-title" for="review"><strong>Notes</strong></label>
 			</div>
 			<div class = "form-group" style = "width: 78%">
-				<textarea class = "form-control" name = "review" rows = "3" placeholder="Leave your review here."></textarea>
+				<textarea class = "form-control" name = "review" rows = "3" placeholder="Leave your review here." id = "review"></textarea>
 			</div>
 			<div class = "login-row"  style = "width: 78%">
-				<button type = "submit" class = "btn btn-dark" >Submit</button>
+				<button onclick="checkReview()" type = "submit" class = "btn btn-dark" id = "submitReview" disabled>Submit</button>
 			</div>
+			<div id="noReview" class="form-text"></div>
 		</form>
 	</div>
 </div>
@@ -79,8 +80,15 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
 	val.innerHTML = slider.value;
 
 
-	slider.oninput = function() {
-		val.innerHTML = this.value;
+	slider.oninput = () => {
+		val.innerHTML = slider.value;
+	}
+
+	var review = document.getElementById("review");
+	var noReviewMessage = document.getElementById("noReview");
+
+	review.onkeypress = function() {
+		submitReview.disabled = false;
 	}
 
 </script>

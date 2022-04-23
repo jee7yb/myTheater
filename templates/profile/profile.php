@@ -82,13 +82,10 @@
 		<div class="input-group p-3 search-container">
   			<span class="input-group-text search-addon"><img src="templates/home/style/imgs/searchicon.png" class = "searchicon" alt = "Search Icon"></span>
 			<input type="text" class = "searchbar col-md-4" placeholder="Search your ratings" aria-label="Username">
-			<div class="input-group-text search-addon">
+			<div class="input-group-text search-addon" id="filterDiv">
 				<div class = "dropdown">
 					<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "Filter Icon"></button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">Alphabetized</a>
-						<a class="dropdown-item" href="#">Release Date</a>
-						<a class="dropdown-item" href="#">Rating</a>
 					</div>
 				</div>
 			</div>
@@ -98,32 +95,43 @@
 	<!-- FUNCTIONALITY TO DISPLAY A USER'S RATINGS -->
 	<div class = "container">
 		<div class = "row">
+			<div class = "text-center">
+			<p id="movieCounter"></p>
+			<button class = "btn" onclick="jsonreq();" style="background-color: #FE6A16; color: white;">Find Number of Movies Rated</button>
+			</div>
+		</div>
+		</br>
+		<div class="row">
 			<?php 
-			foreach ($ratedMovies as $key=>$value) { 
-			?>
-				<div class= "col-md-3 col-sm-6">
-					<div class = "card" style = "align-items: center;">
-						<form action="?command=rate" method="post" class = "card">
-							<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
-							<input type="image" name="placeholder" src="<?=$value["poster"]?>" value="<?=$value["title"]?>"/>
-						</form>
-			<?php 
+			if (isset($_SESSION["json"])){
+				echo $_SESSION["json"];
+			} else {
+				foreach ($ratedMovies as $key=>$value) { 
+				?>
+					<div class= "col-md-3 col-sm-6">
+						<div class = "card" style = "align-items: center;">
+							<form action="?command=rate" method="post" class = "card">
+								<input type="hidden" name = "clickedmovie" value="<?=$value["title"]?>"/>
+								<input type="image" name="placeholder" src="<?=$value["poster"]?>" value="<?=$value["title"]?>"/>
+							</form>
+				<?php 
 							$db = new Database();
 							$result = $db->query("select rating, reviewText from review where uid = ? and mid = ? order by rid desc limit 1;", "ii", $user["id"][0]["uid"], $value["mid"]);
-			?>
-						<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "Rate Icon"><?=$result[0]["rating"]?></p>
-			<?php
+				?>
+							<p class = "movie-rating"><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "Rate Icon"><?=$result[0]["rating"]?></p>
+				<?php
 							echo $result[0]["reviewText"];
-			?>
-						<form action="?command=profile" method="post">
-							<input type="submit" class = "btn btn-dark delete-btn" name="deleteRatingButton" value="Delete Rating"/>
-							<input type="hidden" name="deleteRating" value="<?=$value["mid"]?>"/>
-						</form>
+				?>
+							<form action="?command=profile" method="post">
+								<input type="submit" class = "btn btn-dark delete-btn" name="deleteRatingButton" value="Delete Rating"/>
+								<input type="hidden" name="deleteRating" value="<?=$value["mid"]?>"/>
+							</form>
+						</div>
 					</div>
-				</div>
-			<?php 
-	        	} 
-	        ?>
+				<?php 
+					} 
+			}
+			?>
 		</div>
 	</div>
 
@@ -138,6 +146,30 @@
     crossorigin="anonymous"></script>
 
     <script>
+		var user = {
+			name: "<?=$user["name"]?>",
+			email: "<?=$user["email"]?>",
+			phone: "<?=$user["phone"]?>"
+		}
+
+		userName = document.getElementById("name-text-update");
+		userName.innerHTML = user.name + "'s Profile!";
+
+		userEmail = document.getElementById("email-text-update");
+		userEmail.innerHTML = user.email;
+
+		userPhone = document.getElementById("phone-text-update");
+		userPhone.innerHTML = user.phone;
+
+		var filter = document.getElementById("filterDiv");
+
+		filter.onmouseenter = function() {
+			filter.innerHTML = '<a class="dropdown-item" href="?command=profile&sort=alphabetized">Alphabetized</a><a class="dropdown-item" href="?command=profile&sort=none">Popularity</a>';
+		}
+
+		filter.onmouseleave = function() {
+			filter.innerHTML = '<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filter"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>';
+		}
 
     	function nameUpdate(){
     		if ($("#name-input").css('display') === "none"){
@@ -183,6 +215,25 @@
     			$("#phone-text").css('display', 'none');
     		}
     	}
+
+		function jsonreq() {
+			var ajax = new XMLHttpRequest();
+			ajax.open("GET", "?command=jsonreq", true);
+			ajax.responseType = "json";
+			ajax.send(null);
+			ajax.addEventListener("load", function() {
+				if (this.status == 200) {
+					console.log(this.status);
+					console.log(this.response);
+					counter = this.response;
+					document.getElementById("movieCounter").innerHTML = "Number of movies rated: " + counter[0].count;
+				}
+			});
+			ajax.addEventListener("error", function() {
+				document.getElementById("movieCounter").innerHTML = "<div class='alert alert-danger'>An Error Occurred</div>";
+
+			})
+		}
     </script>
 	
 </body>
