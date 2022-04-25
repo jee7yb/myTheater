@@ -79,7 +79,7 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
 	var val = document.getElementById("rate-val");
 	val.innerHTML = slider.value;
 
-
+	//arrow function to represent the updated slider value
 	slider.oninput = () => {
 		val.innerHTML = slider.value;
 	}
@@ -87,6 +87,7 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
 	var review = document.getElementById("review");
 	var noReviewMessage = document.getElementById("noReview");
 
+	//event listener to only allow form to submit when there is a review
 	review.onkeypress = function() {
 		submitReview.disabled = false;
 	}

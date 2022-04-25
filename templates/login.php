@@ -115,6 +115,7 @@
 
     <script type = "text/javascript">
 
+        //function to ensure that password is at least 8 characters long with one special character
         function passwordValidate() {
             var pass = document.getElementById("password");
 
@@ -135,6 +136,7 @@
             }
         }
 
+        //function to validate an email address
         function emailValidate() {
             var email = document.getElementById("email");
             var emailval = email.value;
@@ -150,6 +152,7 @@
 
         }
 
+        //function to validate phone number -- form can be 123-123-1234 or 1231231234
         function phoneValidate(){
             var phone = document.getElementById("phone");
             var phoneval = phone.value;
@@ -165,6 +168,7 @@
             }
         }
 
+        //checks email, phone, and password to disable/enable button
         function validate(){
             var loginbtn = document.getElementById("login-btn");
             if (emailValidate() && passwordValidate() && phoneValidate()){
@@ -174,6 +178,7 @@
             }
         }
 
+        //adding all the event listeners
         document.getElementById("password").addEventListener("keyup", passwordValidate);
         document.getElementById("email").addEventListener("keyup", emailValidate);
         document.getElementById("phone").addEventListener("keyup", phoneValidate);

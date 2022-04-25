@@ -163,6 +163,7 @@
 
 		var filter = document.getElementById("filterDiv");
 
+		//two anonymous functions changing the layout of the profile screen
 		filter.onmouseenter = function() {
 			filter.innerHTML = '<a class="dropdown-item" href="?command=profile&sort=alphabetized">Alphabetized</a><a class="dropdown-item" href="?command=profile&sort=none">Popularity</a>';
 		}
@@ -171,6 +172,7 @@
 			filter.innerHTML = '<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filter"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>';
 		}
 
+		//function to change the name field
     	function nameUpdate(){
     		if ($("#name-input").css('display') === "none"){
     			$("#name-input").css('display', 'flex');
@@ -186,6 +188,7 @@
     		}
     	}
 
+		//function to change the email field
     	function emailUpdate(){    		
 			if ($("#email-input").css('display') === "none"){
     			$("#email-input").css('display', 'flex');
@@ -201,6 +204,7 @@
     		}
     	}
 
+		//function to change the phone field
     	function phoneUpdate(){    		
 			if ($("#phone-input").css('display') === "none"){
     			$("#phone-input").css('display', 'flex');
@@ -217,6 +221,8 @@
     	}
 
 		function jsonreq() {
+
+			//using ajax request to find the total number of movies rated by a user
 			var ajax = new XMLHttpRequest();
 			ajax.open("GET", "?command=jsonreq", true);
 			ajax.responseType = "json";
