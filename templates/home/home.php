@@ -94,10 +94,12 @@
 <script>
 	var filter = document.getElementById("filterDiv");
 
+	//adds an event when mouse hovers on filter icon
 	filter.onmouseenter = function() {
 		filter.innerHTML = '<a class="dropdown-item" href="?command=home&sort=alphabetized">Alphabetized</a><a class="dropdown-item" href="?command=home&sort=none">Popularity</a><a class="dropdown-item" href="?command=home&sort=rating">Rating</a>';
 	}
 
+	//adds an event when mouse leaves filter icon
 	filter.onmouseleave = function() {
 		filter.innerHTML = '<button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filter"><img src="templates/home/style/imgs/filtericon.png" class = "searchicon" alt = "..."></button>';
 	}
