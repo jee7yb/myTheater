@@ -180,6 +180,12 @@ body {
 	height:100px;
 }
 
+.new{
+	border-color:red;
+	color: red;
+	font-size: 100px;
+}
+
 /*PSEUDO-CLASSES*/
 
 .card-img-top:active,

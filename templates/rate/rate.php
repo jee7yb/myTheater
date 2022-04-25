@@ -10,8 +10,7 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Rachel Zhao and Jessie Eoff">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
 	<link rel="stylesheet" type="text/css" href="templates/rate/style/rate.css">
 </head>
 
@@ -53,19 +52,46 @@ https://stackoverflow.com/questions/16841323/making-gradient-background-fill-pag
 		<form action="?command=rate" method="post">
 			<p class = "rating-title"><strong>Rating</strong></p>
 			<label for = "overallrating">1 &ensp;</label><input type="range" min="1" max="5" step = ".1" name="ratingNum" class="slider" id = "overallrating" value = "<?=$clickedmovie[0]['rating']?>">&ensp; 5
+			<p><img src="templates/home/style/imgs/rateicon.png" class = "rateicon" alt = "..."><span id = "rate-val"></span></p>
 			<input type="hidden" name = "clickedmovie" value="<?=$clickedmovie[0]["title"]?>"/>
 			<div class = "row notes-label">
 				<label class = "rating-title" for="review"><strong>Notes</strong></label>
 			</div>
 			<div class = "form-group" style = "width: 78%">
-				<textarea class = "form-control" name = "review" rows = "3" placeholder="Leave your review here."></textarea>
+				<textarea class = "form-control" name = "review" rows = "3" placeholder="Leave your review here." id = "review"></textarea>
 			</div>
 			<div class = "login-row"  style = "width: 78%">
-				<button type = "submit" class = "btn btn-dark" >Submit</button>
+				<button onclick="checkReview()" type = "submit" class = "btn btn-dark" id = "submitReview" disabled>Submit</button>
 			</div>
+			<div id="noReview" class="form-text"></div>
 		</form>
 	</div>
 </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+<script>
+	var slider = document.getElementById("overallrating");
+	var val = document.getElementById("rate-val");
+	val.innerHTML = slider.value;
+
+
+	slider.oninput = () => {
+		val.innerHTML = slider.value;
+	}
+
+	var review = document.getElementById("review");
+	var noReviewMessage = document.getElementById("noReview");
+
+	review.onkeypress = function() {
+		submitReview.disabled = false;
+	}
+
+</script>
 
 </body>
 </html>

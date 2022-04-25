@@ -45,3 +45,9 @@ body {
 .login-top{
 	padding-top:20px;
 }
+
+.password-text{
+	font-size: small;
+	color: grey;
+}
+
